@@ -1,0 +1,70 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: MAIN.aux
+A level-1 auxiliary file: titelseite.aux
+A level-1 auxiliary file: danksagung.aux
+A level-1 auxiliary file: erklaerung.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: symbolverzeichnis.aux
+A level-1 auxiliary file: einleitung.aux
+A level-1 auxiliary file: grundlagen.aux
+A level-1 auxiliary file: hauptteil.aux
+A level-1 auxiliary file: messung.aux
+A level-1 auxiliary file: ergebnisse.aux
+A level-1 auxiliary file: diskussion.aux
+A level-1 auxiliary file: fazit.aux
+A level-1 auxiliary file: anhang.aux
+The style file: alphadin.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: literatur.bib
+Repeated entry---line 241 of file literatur.bib
+ : @misc{ART
+ :          ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "basler"
+You've used 15 entries,
+            4793 wiz_defined-function locations,
+            999 strings with 8454 characters,
+and the built_in function-call counts, 8955 in all, are:
+= -- 910
+> -- 238
+< -- 227
++ -- 265
+- -- 85
+* -- 608
+:= -- 1513
+add.period$ -- 19
+call.type$ -- 15
+change.case$ -- 73
+chr.to.int$ -- 14
+cite$ -- 15
+duplicate$ -- 261
+empty$ -- 659
+format.name$ -- 155
+if$ -- 1782
+int.to.chr$ -- 2
+int.to.str$ -- 0
+missing$ -- 69
+newline$ -- 94
+num.names$ -- 45
+pop$ -- 104
+preamble$ -- 1
+purify$ -- 103
+quote$ -- 0
+skip$ -- 472
+stack$ -- 0
+substring$ -- 705
+swap$ -- 57
+text.length$ -- 43
+text.prefix$ -- 7
+top$ -- 0
+type$ -- 126
+warning$ -- 0
+while$ -- 74
+width$ -- 17
+write$ -- 197
+(There was 1 error message)

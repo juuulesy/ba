@@ -1,0 +1,34 @@
+\chapter*{Symbolverzeichnis}										% da *-Variante m�ssen Kopfzeilen und TOC-Eintrag von Hand generiert werden
+\markboth{Symbolverzeichnis}{Symbolverzeichnis} 				% Kopfzeile manuell anpassen
+\addcontentsline{toc}{chapter}{Symbolverzeichnis}				% TOC-Eintrag
+
+
+
+\section*{Abkürzungen}
+
+%* Benutzung der Acronym-Umgebung
+%* \acrodef{Name zum aufrufen im Dokument}[gew�nschte Abk�rzung]{ausgeschriebener Begriff}
+%* \ac{Name} zur Verwendung im Dokument - beim 1.maligen Verwenden wird der ausgeschriebene
+%* Begriff mit der Abk�rzung dahinter in Klammern gesetzt, danach nur noch die Abk�rzung
+
+\acrodef{BSN}[BSN]{Body Sensor Network}
+\acrodef{KF}[KF]{Kalman Filter}
+\acrodef{MedIT}[MedIT]{Institut f{\"u}r medizinische Informationstechnik}
+\acrodef{MN}[MN]{Masterknoten}
+\acrodef{SN}[SN]{Sensorknoten}
+\acrodef{ToF}[ToF]{Time of Flight}
+\acrodef{UKF}[UKF]{Unscented Kalman Filter}
+
+
+%* \acs{Name} ruft explizit die Abkürzung auf.
+%* \acl{Name} ruft explizit den ausgeschriebenen Begriff auf.
+
+\begin{tabularx}{\textwidth}{p{.18\textwidth}X}
+\acs{BSN} & \acl{BSN} \\
+\acs{KF} & \acl{KF} \\
+\acs{MedIT} & \acl{MedIT} \\
+\acs{MN} & \acl{MN} \\
+\acs{SN} & \acl{SN} \\
+\acs{ToF} & \acl{ToF} \\
+\acs{UKF} & \acl{UKF} \\
+\end{tabularx}

@@ -1,0 +1,37 @@
+\select@language {ngerman}
+\contentsline {chapter}{\nonumberline Danksagung}{iii}{chapter*.1}
+\contentsline {chapter}{\nonumberline Zusammenfassung}{vii}{chapter*.2}
+\contentsline {chapter}{Inhaltsverzeichnis}{ix}{chapter*.2}
+\contentsline {chapter}{Symbolverzeichnis}{xi}{chapter*.4}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Aufbau der Arbeit}{1}{section.1.1}
+\contentsline {chapter}{\numberline {2}Grundlagen}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Medizinische Grundlagen}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Posturale Kontrolle}{3}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Mathematische Methoden}{3}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Kalman Filter}{3}{subsection.2.2.1}
+\contentsline {subsubsection}{\nonumberline Unscented Kalman Filter}{4}{section*.6}
+\contentsline {section}{\numberline {2.3}Bewegungserfassung}{4}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Definitionen}{4}{subsection.2.3.1}
+\contentsline {subsubsection}{\nonumberline Aktionsbereich}{4}{section*.7}
+\contentsline {subsubsection}{\nonumberline Aufl\IeC {\"o}sung}{4}{section*.8}
+\contentsline {subsubsection}{\nonumberline Genauigkeit}{5}{section*.9}
+\contentsline {subsubsection}{\nonumberline Latenzzeit}{5}{section*.10}
+\contentsline {subsubsection}{\nonumberline Marker}{5}{section*.11}
+\contentsline {subsubsection}{\nonumberline Time of Flight}{5}{section*.12}
+\contentsline {subsubsection}{\nonumberline Updaterate}{5}{section*.13}
+\contentsline {subsubsection}{\nonumberline Verdeckung}{6}{section*.14}
+\contentsline {subsection}{\numberline {2.3.2}Arten der Aufnahmesysteme}{6}{subsection.2.3.2}
+\contentsline {subsubsection}{\nonumberline Outside-In Systeme}{6}{section*.15}
+\contentsline {subsubsection}{\nonumberline Inside-In Systeme}{6}{section*.16}
+\contentsline {subsubsection}{\nonumberline Inside-Out Systeme}{7}{section*.17}
+\contentsline {subsection}{\numberline {2.3.3}Optische Trackingsysteme}{7}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Tracking mit Intertialsensorik}{8}{subsection.2.3.4}
+\contentsline {section}{\numberline {2.4}Body Sensor Network}{8}{section.2.4}
+\contentsline {chapter}{\numberline {3}Hauptteil}{9}{chapter.3}
+\contentsline {chapter}{\numberline {4}Messung}{11}{chapter.4}
+\contentsline {chapter}{\numberline {5}Ergebnisse}{13}{chapter.5}
+\contentsline {chapter}{\numberline {6}Diskussion}{15}{chapter.6}
+\contentsline {chapter}{\numberline {7}Fazit}{17}{chapter.7}
+\contentsline {chapter}{\numberline {A}Anhang}{19}{appendix.A}
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{21}{chapter*.18}

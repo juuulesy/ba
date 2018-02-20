@@ -1,0 +1,88 @@
+\chapter{Grundlagen}
+\section{Medizinische Grundlagen}
+\subsection{Posturale Kontrolle}
+Der Begriff der \textit{posturalen Kontrolle} bezeichnet die Fähigkeit eines Menschen, auch trotz kurzfristiger Störungen, das motorische Gleichgewicht herstellen, aufrechterhalten und wiedererlangen zu können \cite{PK1}.
+Da zur Realisierung der posturalen Kontrolle ein ständiger Abgleich zwischen dem sensorischen Prozess der Erfassung der Körperlage und eventueller Bewegungen und der motorischen Reaktion auf eben diese erfolgen muss, spricht man häufig auch von der sensomotirischen Gleichgewichtsregulation \cite{PK2}.
+
+\section{Mathematische Methoden}
+Innerhalb der vorliegenden Arbeit werden, unter Anderem zur Datenverarbeitung, verschiedene Berechnungen durchgeführt und mathematische Annahmen getroffen, welche auf grundlegenden mathematischen Ansätzen beruhen.
+So wird zur Datenverarbeitung, unter anderem vom Kalman Filter (KF) und einer seiner Weitereinwicklungen, dem Unscented Kalman Filter (UKF), Gebrauch gemacht.
+
+\subsection{Kalman Filter}
+Betrachtet man dynamische Systeme, muss stets davon ausgegangen werden, dass diese keine ideale Beschreibung des Systemverhaltens zulassen.
+Mitunter werden die Systemgleichungen bei der mathematischen Betrachtung vereinfacht, was in einer, als Systemrauschen bezeichneten, additiven, nicht beeinflussbaren Störung des Systems resultiert.
+Durch die Anbringung von Sensoren ist eine weitere Fehlerquelle gegeben, deren Einfluss über die Ausgangsgröße des Systems berücksichtigt wird. Störungen dieser Art werden Messrauschen genannt.
+Sowohl das Systemrauschen, als auch das Messrauschen werden in Form von Zufallsprozessen in die Berechnungen miteinbezogen. Dies hat jedoch zur Folge, dass auch die Eingangs- und Ausgangsgrößen des Systems als stochastische Größen betrachtet werden müssen.
+Um dennoch eine qualitativ hochwertige Aussage über die Zustände des Systems treffen zu können, muss ein, für den gestörten Eingangsvektor, optimaler Schätzwert gefunden werden. Als optimal wird hierbei, aufgrund der wahrscheinlichkeitstheoretischen Betrachtung, ein Wert minimaler Varianz angestrebt. \cite{Sys2}
+\\Einen Ansatz zu diesem Problem lieferte R. Kalman im Jahr 1960 mit dem, nach ihm benannten, Kalman Filter \cite{kalman}.
+
+\subsubsection{Unscented Kalman Filter}
+
+
+\section{Bewegungserfassung}
+Bei der Bewegungserfassung, welche häufig auch als \textit{Motion Capturing} bezeichnet wird, erfolgt eine Aufzeichnung und Umwandlung realer Bewegungen zu einer digitalen, für Computer erfassbare, Darstellung eben dieser.
+Dies wird durch das Verfolgen markanter Punkte, auch \textit{tracken} genannt, während der Bewegung eines Körper und anschließender Erstellung eines 3D-Modells zur weiteren Verarbeitung.
+Motion Capturing kann unter Verwendung verschiedener Systeme realisiert werden. Die größte Verwendung von Motion Capturing Systemen liegt in Bereichen wie der Medizin oder auch dem Entertainment, z.B. in Form der Animation von Filmcharakteren. \cite{mocap_def}
+
+\subsection{Definitionen}
+Zum besseren Verständnis der Thematik des Motion Capturing werden an dieser Stelle einige grundlegende Begriffe erläutert.
+\subsubsection{Aktionsbereich}
+Hierunter wird der Bereich verstanden, in welchem der Tracker, unter Einhaltung der angegebenen Auflösung und Genauigkeit, zuverlässige Ergebnisse liefern kann \cite{P25}.
+Bei optischen Systemen wird hiermit der Raum beschrieben, in welchem die Bildausschnitte der Kameras eine Bestimmung der Position des Markers zulassen \cite{mocap}.
+\subsubsection{Auflösung}
+Unter der Auflösung eines Trackingsystems versteht man die kleinste Änderung in Position und Orientierung, welche durch das System aufgezeichnet werden kann \cite{P25}.
+\subsubsection{Genauigkeit}
+Bei der Genauigkeit handelt es sich um den Messfehler, welcher während der Messung von Orientierung und Position auftritt \cite{P25}.
+\subsubsection{Latenzzeit}
+Die Latenzzeit beschreibt die Verzögerung zwischen der tatsächlichen Änderung in Position und Orientierung und dem Zeitpunkt zu welchem das System die Änderung erkennt \cite{vr}.
+\subsubsection{Marker}
+Bei Markern handelt es sich um Hilfsmittel zur Kennzeichnung markanter Punkte am zu trackenden Objekt. Hierbei wird zwischen aktiven und passiven Markern unterschieden.
+Unter aktiven Markern versteht man solche, welche, meist in Form vom LEDs, infrarotes Licht emittieren. Dieses wird von speziellen, mit den Markern synchronsierten, Kameras erfasst. \cite{ART}
+\\Aktive Marker eignen sich besonders für den Einsatz in Verbindung mit relexionsreichen Materialien und bei staubigen Umgebungsverhältnissen \cite{qualsys_act}.
+\\Im Gegensatz zu den aktiven Markern sind passive Marker retroreflektiv. Anstatt wie aktive Marker infrarotes Licht zu emittieren, reflektieren sie einfallende Infrarotstrahlung in die Einfallsrichtung gebündelt. \cite{ART}
+\subsubsection{Time of Flight}
+Unter der Time of Flight (ToF) versteht man die Zeit, welche ein Signal von seiner Quelle bis zum messenden Sensor benötigt. Mithilfe der ToF kann aufgrund der Proportionalität der Dauer zur Strecke eine Aussage über die zurückgelegte Strecke getroffen werden. \cite{P24}
+\subsubsection{Updaterate}
+Die Updaterate eines Systems beschreibt die Anzahl der Abtastungen eines Sensors pro Sekunde. Je höher die Updaterate ist, desto besser kann das dynamische Systemverhalten beschrieben werden. \cite{vr}
+\subsubsection{Verdeckung}
+Verdeckung beschreibt den Zustand bei welchem ein Marker von einer oder mehreren Kameras nicht mehr wahrgenommen werden kann, weil Teile des zu trackenden Objekts oder andere Gegenstände die Sicht auf den Marker verhindern \cite{occlusion}.
+
+\subsection{Arten der Aufnahmesysteme}
+Im Bereich der Bewegungserfassung wird zwischen drei verschiedenen Gruppen der Aufnahmesysteme unterschieden. Hierbei erfolgt die Zuordnung über die Anbringungsposition der Sensoren und Datenquellen. \cite{P25}
+\subsubsection{Outside-In Systeme}
+Das Prinzip der Outside-In Systeme sieht eine Anbringung der Sensoren an festen Positionen im Raum vor. Die Sensoren werden hierbei auf das zu trackende Objekt ausgerichtet. Dieses ist wiederum mit Markern versehen, über welche die Datenerfassung erfolgen kann.
+Hierbei ist auf eine ausreichend hohe Anzahl von Sensoren zu achten, um eine möglichst fehlerfreie Auswertung der Aufzeichnungen garantieren zu können. \cite{P25}
+\\Dieses Verfahren findet Anwendung in optischen Trackingsystem, welche darauf beruhen, dass Bewegungen des, mit Markern versehenen Objektes, über Kameras erfasst werden \cite{optsys2}.
+\subsubsection{Inside-In Systeme}
+Bei Inside-In Systemen, werden nicht nur die Datenquellen am Aktuer platziert, sondern auch die Sensoren.
+Ein klassisches Beispiel hierfür stellen Exo-Skelett Systeme dar, bei welchen die relativen Bewegungen des Darstellers über Potentiometer bestimmt werden können.
+Ein wesentlicher Vorteil dieser Systeme, gegenüber den Outside-In Systemen, besteht darin, dass das Auftreten von Verdeckungsproblemen vermieden wird und somit das Tracken mehrerer Akteure zum gleichen Zeitpunkt, ohne die Gefahr eines Datenverlustes möglich ist.
+Oft wird hierbei jedoch die Bewegungsfreiheit der Darsteller durch das mechanische Skelett stark eingeschränkt. \cite{optsys2}
+\subsubsection{Inside-Out Systeme}
+Inside-Out Systeme nutzen am Darsteller positionierte Sensoren, welche Signale von fest in der Umgebung platzierten Datenquellen empfangen und auswerten können \cite{P25}.
+Ein Beispiel für Systeme dieser Art sind magnetische Trackingsysteme. Hierbei wird durch externe Quellen ein Magnetfeld erzeugt, dessen Feldstärke dann an den jeweiligen Sensoren gemessen wird, um eine Entfernung zur Quelle zu bestimmen. Über die relativen Positionen der Sensoren zu verschiedenen Quellen ist anschließend eine räumliche Positionsbestimmung möglich. \cite{optsys2}
+
+\subsection{Optische Trackingsysteme}
+Unter optischen Trackingsystemen werden all die Verfahren des Motion Capturing zusammengefasst, welche auf einer Bewegungserfassung unter Verwendung von Kameras und Videoaufnahmen basieren.
+Im Regelfall werden für ein präzises optisches Tracken, je nach verwendetem System, vier bis zwölf Spezialkameras benötigt.\cite{optsys1}
+\\Das Themengebiet der optischen Trackingsysteme lässt sich in das markerbasierte und das markerlose Tracking unterteilen.
+\\Beim markerbasierten Tracking wird zwischen der Verwendung von aktiven und passiven Markern unterschieden \cite{P25}. Die Funktionsweise beider Teilbereiche beruht jedoch darauf, dass Markerpositionen mithilfe von Spezialkameras erfasst werden. Hierbei werden die Kameras meist am oberen Rand der Aufnahmeumgebung, in regelmäßigen Abständen zueinander, angebracht.
+Eine typischerweise beim passiven Tracking verwendete Kamera ist so aufgebaut, dass ringförmig um das Objektiv herum, eine Vielzahl von Infrarot-Leuchtdioden angebracht ist, über welche die passiven Marker angestrahlt und die Reflexion anschließend vom Objektiv erfasst werden kann. \cite{optsys2}
+Ein Beispiel hierfür, stellen die in dieser Arbeit, im Referenzsystem verwendeten Oqus Kameras der Firma Qualisys dar \cite{oqus}.
+\\Je nach Art und Aufbau des verwendeten Systems kann es zu großen Schwankungen bezüglich des Aktionsbereichs zwischen den einzelnen Systeme kommen \cite{P24}. Bei geeigneter Wahl des Systems ist das erzielen sehr großer Aktionsbereiche jedoch durchaus möglich \cite{P25}.
+Ein weiterer positiver Aspekt des markerbasierten Trackings liegt in der leichten Erweiterbarkeit des Messaufbaus. So können ohne großen Aufwand zusätzliche Marker am Akteur angebracht werden, ohne dass dieser wesentlich in seiner Bewegungsfreiheit beeinträchtig wird. \cite{optsys2}
+\\Das markerbasierte Tracking bietet jedoch nicht nur Vorteile. Ein wesentlicher Nachteil Systeme dieser Art ist durch die Verdeckung gegeben. So kann es vorkommen das, entweder vom Darsteller selbst, durch weitere Akteure oder aber auch durch Gegenstände innerhalb des Aktionsbereichs, ein Marker verdeckt wird und so nicht von ausreichend Kameras eingesehen werden kann. Ein Datenverlust aufgrund eines aus dem Bildbereich einer Kamera entwichenen Markers kann teilweise durch Interpolationsverfahren bei der späteren Datenverarbeitung behoben werden. \cite{optsys2} Um die Problematik der Verdeckung zu reduzieren, bevor es zu Datenverlusten kommen kann, ist es mitunter sinnvoll weitere Kameras in die Aufnahmeumgebung zu integrieren \cite{P25}.
+\\Beim markerlosen Tracking erfolgt die Bewegungserfassung, abgesehen von Kameras, ohne weitere Hilfsmittel. Ein Beispiel hierfür sind ToF-Kameras. Diese bestimmen die Position es zu trackenden Objektes über eine Lichtzeitmessungen. Hierbei wird die Zeit bestimmt, welche ein, von der Kamera ausgestrahlter, Lichtimpuls benötigt um nach Reflexion wieder die Kamera zu erreichen. \cite{basler}
+Ein weiteres markerloses Trackingverfahren ist das sogenannte Laser-Ranging. Hierbei wird ein Beugungsgitter zwischen Objekt und Laser platziert und durch den Laser angestrahlt, wodurch ein Intereferenzmuster auf dem Objekt erzeugt wird. Dieses Interferenzmuster wird anschließend mithilfe von Kameras gescannt, welche die Intensität des Musters bestimmen. Hieraus wird dann der Contrast Ratio bestimmt, welcher dazu dient die Distanz zwischen getracktem Objekt und Beugungsgitter zu bestimmen. Ein Nachteil dieses Verfahrens ist der stark eingeschränkte Aktionsbereich, welcher daher rührt, dass mit steigender Entfernung zwischen Beugungsgitter und Objekt die Messgenauigkeit stark abnimmt und somit keine qualitativ wertvolle Aussage über die tatsächliche Distanz mehr getroffen werden kann. \cite{P25}
+\\Unabhängig davon, ob es sich um markerbasiertes oder markerloses Tracking handelt zeichnen sich optische Verfahren zur Bewegungserfassung besonders, durch das Erzielen sehr hoher Genauigkeit und Auflösung innerhalb ihrer jeweiligen Aktiobsbereiche aus \cite{P24}. Auch die Verfügbarkeit hoher Updateraten stellt in beiden Fällen einen positiven Aspekt der Systeme dar \cite{P25}.
+Der häufig hohe Rechenaufwand, welcher durch eventuelle Nachbearbeitung der Daten entsteht ist ein wesentlicher Nachteil dieser Art der Bewegungserfassung \cite{optsys1}. Da es bei optischen Verfahren zu, durch Umgebungslicht verursachten, Störungen kommen kann ist ein erfolgreicher Einsatz dieser Techniken im wesentlichen nur in Messlaboren unter konstanten Umgebungsverhätnissen möglich \cite{P25}.
+\subsection{Tracking mit Intertialsensorik}
+
+
+\section{Body Sensor Network}
+Eine weitere Art der Datenerhebung für die Positionsbestimmung ist durch sogenannte \textit{Body Sensor Networks} (BSN) gegeben.
+Bei diesen handelt es sich um Sensornetzwerke, welche meist aus mehreren Sensorknoten (SN) und einem Masterknoten (MN) bestehen.
+Innerhalb dieser SN wird überwiegend auf das Tracking mit Inertialsensorik zurückgegriffen.
+Kommunikation innerhalb des BSN ist sowohl zwischen den SN untereinander, als auch zwischen einzelnen SN und dem MN möglich.
+Dadurch, dass die SN am Körper des Patienten positioniert werden, ist es diesem weitestgehend möglich, seinem Alltag ohne große Einschränkungen nachzugehen.
+Hierdurch wird die Möglichkeit zur Langzeitanalyse verschiedener Parameter eines Patienten, außerhalb eines Labors, erheblich vergrößert.
