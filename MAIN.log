@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.14)  19 FEB 2018 16:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.14)  22 FEB 2018 15:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1756,7 +1756,7 @@ Package babel Info: Redefining ngerman shorthand "~
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 7.
 )
-Overfull \hbox (11.74983pt too wide) in paragraph at lines 34--131
+Overfull \hbox (11.74983pt too wide) in paragraph at lines 36--131
 [] 
  []
 
@@ -1923,13 +1923,22 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 79.
 [7]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 79.
+(babel)             in language  on input line 80.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 79.
+(babel)             in language  on input line 80.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 82.
+(babel)             in language  on input line 94.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 82.
+(babel)             in language  on input line 94.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 94.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 94.
+ [8]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 103.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 103.
 )
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 145.
@@ -1939,10 +1948,24 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 145.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 145.
- [8]
+ [9]
 \openout2 = `hauptteil.aux'.
 
  (./hauptteil.tex
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 1.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 1.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 1.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 1.
+ [10
+
+
+
+
+]
 chapter 3.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
@@ -1957,12 +1980,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 147.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 147.
- [9
-
-
-
-
-]
+ [11]
 \openout2 = `messung.aux'.
 
  (./messung.tex
@@ -1974,7 +1992,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
- [10
+ [12
 
 
 
@@ -1994,7 +2012,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 149.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 149.
- [11]
+ [13]
 \openout2 = `ergebnisse.aux'.
 
  (./ergebnisse.tex
@@ -2006,7 +2024,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
- [12
+ [14
 
 
 
@@ -2026,7 +2044,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 151.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 151.
- [13]
+ [15]
 \openout2 = `diskussion.aux'.
 
  (./diskussion.tex
@@ -2038,7 +2056,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
- [14
+ [16
 
 
 
@@ -2058,7 +2076,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 153.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 153.
- [15]
+ [17]
 \openout2 = `fazit.aux'.
 
  (./fazit.tex
@@ -2070,7 +2088,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
- [16
+ [18
 
 
 
@@ -2090,7 +2108,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 155.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 155.
- [17]
+ [19]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 160.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2099,7 +2117,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 160.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 160.
- [18
+ [20
 
 
 
@@ -2121,7 +2139,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 162.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 162.
- [19
+ [21
 
 
 
@@ -2134,7 +2152,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
- [20
+ [22
 
 
 
@@ -2148,38 +2166,38 @@ LaTeX Font Info:    Try loading font information for T1+lmtt on input line 13.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Underfull \hbox (badness 1796) in paragraph at lines 60--67
+Underfull \hbox (badness 1796) in paragraph at lines 66--73
 []\T1/lmr/m/sc/12 Pollock\T1/lmr/m/n/12 , Alex-an-dra S. ; \T1/lmr/m/sc/12 Dur-ward\T1/lmr/m/n/12 , Bri-an R. ; \T1/lmr/m/sc/12 Ro-we\T1/lmr/m/n/12 , Phi-lip J. ;
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 69--74
+Underfull \hbox (badness 1052) in paragraph at lines 75--80
 []\T1/lmr/m/sc/12 Qualisys\T1/lmr/m/n/12 :  \T1/lmr/m/it/12 Short Ran-ge Ac-ti-ve Markers\T1/lmr/m/n/12 .  [][]$\T1/lmtt/m/n/12 https : / / www . qualisys . com /
  []
 
 
-Underfull \hbox (badness 4634) in paragraph at lines 69--74
+Underfull \hbox (badness 4634) in paragraph at lines 75--80
 \T1/lmtt/m/n/12 accessories / active-[]markers / short-[]range-[]active-[]marker/$[][]\T1/lmr/m/n/12 , Zu-letzt be-
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 95.
+(babel)             in language  on input line 92.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 95.
+(babel)             in language  on input line 92.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 95.
+(babel)             in language  on input line 92.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 95.
-[21])
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 174.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 174.
+(babel)             in language  on input line 92.
+[23])
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 174.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 174.
- [22]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 174.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 174.
+ [24]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 174.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 174.
  (./MAIN.aux (./titelseite.aux) (./danksagung.aux) (./erklaerung.aux) (./abstract.aux) (./symbolverzeichnis.aux) (./einleitung.aux) (./grundlagen.aux) (./hauptteil.aux) (./messung.aux) (./ergebnisse.aux) (./diskussion.aux) (./fazit.aux) (./anhang.aux))
@@ -2193,18 +2211,19 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 31149 strings out of 492995
- 577292 string characters out of 6132703
- 722983 words of memory out of 5000000
- 33990 multiletter control sequences out of 15000+600000
+ 31171 strings out of 492995
+ 577486 string characters out of 6132703
+ 724319 words of memory out of 5000000
+ 34004 multiletter control sequences out of 15000+600000
  59189 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,18n,66p,10510b,762s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmro12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on MAIN.pdf (34 pages, 278967 bytes).
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmro12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1
+/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on MAIN.pdf (36 pages, 314768 bytes).
 PDF statistics:
- 418 PDF objects out of 1000 (max. 8388607)
- 363 compressed objects within 4 object streams
- 87 named destinations out of 1000 (max. 500000)
+ 460 PDF objects out of 1000 (max. 8388607)
+ 400 compressed objects within 4 object streams
+ 95 named destinations out of 1000 (max. 500000)
  240 words of extra memory for PDF output out of 10000 (max. 10000000)
 

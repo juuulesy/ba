@@ -27,11 +27,11 @@
 \contentsline {subsubsection}{\nonumberline Inside-Out Systeme}{7}{section*.17}
 \contentsline {subsection}{\numberline {2.3.3}Optische Trackingsysteme}{7}{subsection.2.3.3}
 \contentsline {subsection}{\numberline {2.3.4}Tracking mit Intertialsensorik}{8}{subsection.2.3.4}
-\contentsline {section}{\numberline {2.4}Body Sensor Network}{8}{section.2.4}
-\contentsline {chapter}{\numberline {3}Hauptteil}{9}{chapter.3}
-\contentsline {chapter}{\numberline {4}Messung}{11}{chapter.4}
-\contentsline {chapter}{\numberline {5}Ergebnisse}{13}{chapter.5}
-\contentsline {chapter}{\numberline {6}Diskussion}{15}{chapter.6}
-\contentsline {chapter}{\numberline {7}Fazit}{17}{chapter.7}
-\contentsline {chapter}{\numberline {A}Anhang}{19}{appendix.A}
-\contentsline {chapter}{\nonumberline Literaturverzeichnis}{21}{chapter*.18}
+\contentsline {section}{\numberline {2.4}Body Sensor Network}{9}{section.2.4}
+\contentsline {chapter}{\numberline {3}Hauptteil}{11}{chapter.3}
+\contentsline {chapter}{\numberline {4}Messung}{13}{chapter.4}
+\contentsline {chapter}{\numberline {5}Ergebnisse}{15}{chapter.5}
+\contentsline {chapter}{\numberline {6}Diskussion}{17}{chapter.6}
+\contentsline {chapter}{\numberline {7}Fazit}{19}{chapter.7}
+\contentsline {chapter}{\numberline {A}Anhang}{21}{appendix.A}
+\contentsline {chapter}{\nonumberline Literaturverzeichnis}{23}{chapter*.18}

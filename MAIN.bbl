@@ -39,6 +39,12 @@
 \newblock {In: }\emph{Computer Graphics Laboratory, Stanford University, Tech.
   Rep} 2 (2000), Nr. 2.2
 
+\bibitem[Gro13]{P32}
+\textsc{Groves}, Paul~D.:
+\newblock \emph{Principles of GNSS, inertial, and multisensor integrated
+  navigation systems}.
+\newblock Artech house, 2013
+
 \bibitem[JNW06]{optsys2}
 \textsc{Jack{\`e}l}, D. ; \textsc{Neunreither}, S.  ; \textsc{Wagner}, F.:
 \newblock \emph{Methoden der Computeranimation}.
@@ -92,6 +98,15 @@
 \newblock \url{http://dx.doi.org/10.1055/s-0030-1267402}. --
 \newblock DOI 10.1055/s--0030--1267402.
 \newblock ISBN 0932--0555
+
+\bibitem[WF02]{P31}
+\textsc{Welch}, G. ; \textsc{Foxlin}, E.:
+\newblock Motion tracking: no silver bullet, but a respectable arsenal.
+\newblock {In: }\emph{IEEE Computer Graphics and Applications} 22 (2002), Nov,
+  Nr. 6, S. 24--38.
+\newblock \url{http://dx.doi.org/10.1109/MCG.2002.1046626}. --
+\newblock DOI 10.1109/MCG.2002.1046626. --
+\newblock ISSN 0272--1716
 
 \bibitem[ZPX08]{optsys1}
 \textsc{Zhuang}, Yueting ; \textsc{Pan}, Yunhe  ; \textsc{Xiao}, Jun:

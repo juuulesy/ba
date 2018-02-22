@@ -63,7 +63,7 @@ Inside-Out Systeme nutzen am Darsteller positionierte Sensoren, welche Signale v
 Ein Beispiel für Systeme dieser Art sind magnetische Trackingsysteme. Hierbei wird durch externe Quellen ein Magnetfeld erzeugt, dessen Feldstärke dann an den jeweiligen Sensoren gemessen wird, um eine Entfernung zur Quelle zu bestimmen. Über die relativen Positionen der Sensoren zu verschiedenen Quellen ist anschließend eine räumliche Positionsbestimmung möglich. \cite{optsys2}
 
 \subsection{Optische Trackingsysteme}
-Unter optischen Trackingsystemen werden all die Verfahren des Motion Capturing zusammengefasst, welche auf einer Bewegungserfassung unter Verwendung von Kameras und Videoaufnahmen basieren.
+Unter optischen Trackingsystemen werden all die Verfahren des Motion Capturing zusammengefasst, welche auf einer Bewegungserfassung unter Verwendung von Lichtquellen und optischen Sensoren basieren. \cite{P31}
 Im Regelfall werden für ein präzises optisches Tracken, je nach verwendetem System, vier bis zwölf Spezialkameras benötigt.\cite{optsys1}
 \\Das Themengebiet der optischen Trackingsysteme lässt sich in das markerbasierte und das markerlose Tracking unterteilen.
 \\Beim markerbasierten Tracking wird zwischen der Verwendung von aktiven und passiven Markern unterschieden \cite{P25}. Die Funktionsweise beider Teilbereiche beruht jedoch darauf, dass Markerpositionen mithilfe von Spezialkameras erfasst werden. Hierbei werden die Kameras meist am oberen Rand der Aufnahmeumgebung, in regelmäßigen Abständen zueinander, angebracht.
@@ -76,8 +76,29 @@ Ein weiterer positiver Aspekt des markerbasierten Trackings liegt in der leichte
 Ein weiteres markerloses Trackingverfahren ist das sogenannte Laser-Ranging. Hierbei wird ein Beugungsgitter zwischen Objekt und Laser platziert und durch den Laser angestrahlt, wodurch ein Intereferenzmuster auf dem Objekt erzeugt wird. Dieses Interferenzmuster wird anschließend mithilfe von Kameras gescannt, welche die Intensität des Musters bestimmen. Hieraus wird dann der Contrast Ratio bestimmt, welcher dazu dient die Distanz zwischen getracktem Objekt und Beugungsgitter zu bestimmen. Ein Nachteil dieses Verfahrens ist der stark eingeschränkte Aktionsbereich, welcher daher rührt, dass mit steigender Entfernung zwischen Beugungsgitter und Objekt die Messgenauigkeit stark abnimmt und somit keine qualitativ wertvolle Aussage über die tatsächliche Distanz mehr getroffen werden kann. \cite{P25}
 \\Unabhängig davon, ob es sich um markerbasiertes oder markerloses Tracking handelt zeichnen sich optische Verfahren zur Bewegungserfassung besonders, durch das Erzielen sehr hoher Genauigkeit und Auflösung innerhalb ihrer jeweiligen Aktiobsbereiche aus \cite{P24}. Auch die Verfügbarkeit hoher Updateraten stellt in beiden Fällen einen positiven Aspekt der Systeme dar \cite{P25}.
 Der häufig hohe Rechenaufwand, welcher durch eventuelle Nachbearbeitung der Daten entsteht ist ein wesentlicher Nachteil dieser Art der Bewegungserfassung \cite{optsys1}. Da es bei optischen Verfahren zu, durch Umgebungslicht verursachten, Störungen kommen kann ist ein erfolgreicher Einsatz dieser Techniken im wesentlichen nur in Messlaboren unter konstanten Umgebungsverhätnissen möglich \cite{P25}.
-\subsection{Tracking mit Intertialsensorik}
 
+\subsection{Tracking mit Intertialsensorik}
+In Trackingsystemen mit Inertialsensorik kommen sowohl Beschleunigungssensoren, auch Accelerometer genannt, als auch Gyroskope zum Einsatz. Dabei dienen die Beschleunigungssensoren der Bestimmung der Position des Objektes, während mithilfe der Gyroskope eine Aussage über die Objektorientierung getroffen werden kann. \cite{P24}
+Hierbei beruhen alle Bestimmungen auf dem Messen von Trägheitskräften \cite{P32} unter der Anwendung des 2. Gesetzes von Newton, in der Form
+\begin{equation}\label{Newton2.1}
+    F = ma
+\end{equation} oder
+\begin{equation}\label{Newton2.2.}
+   Q = I\alpha
+\end{equation} \cite{P24}.
+\\Da sowohl die Messungen der Beschleunigungssensoren, als auch die der Gyroskope jeweils nur eine Achse einschließen, müssen für die Ausführung dreidimensionaler Messungen jeweils drei Accelerometer und drei Gyroskope zu einer Inertial measurement unit (IMU) kombiniert werden \cite{P32}. Hierfür werden die Sensoren einer Art jeweils orthogonal zueinander auf einer Platform aufgeordnet \cite{P24}.
+\\Die am häufigsten genutzte Art der Accelerometer sind die Pendelbeschleunigungsmesser. Bei diesen ist eine bekannte Masse an einer Seite einer gedämpften Feder befestigt, während die andere Seite am Gehäuse des Sensors angebracht ist. \cite{P32}
+Während keine Beschleunigung auf den Sensor wirkt, ruhen Feder und Masse. Das Sensorgehäuse und die Referenzmasse sind somit ohne Versatz zueinander ausgerichtet. Sobald jedoch eine Kraft auf das Gehäuse einwirkt und dieses einer Beschleunigung ausgesetzt wird entsteht, aufgrund der Trägheit der Masse, ein Versatz.
+Dieser Versatz und die Stauchung bzw. Streckung der Feder können als zur Beschleunigung proportional angenommen werden. Mithilfe eines Wandler, welcher entweder potentiometrisch oder piezoelektrisch sein kann, wird aus dem Versatz ein Signal abgeleitet. Handelt es sich bei dem Wandler um ein Potentiometer, so ist der Versatz der Masse mit dem Regler des Potentiometers gekoppelt. Wird jedoch ein piezoelektrischer Wandler genutzt, erzeugt der verwendete piezokristall eine elektrische Ladung, wenn, durch den Versatz, eine Kraft auf ihn ausgeübt wird.
+Da es nicht möglich ist die Beschleunigung direkt zu messen, wird unter Beachtung von Gl. \ref{Newton2.1}, die auf die Masse ausgeübte, zur Beschleunigung proportionale Kraft gemessen. Über die Relation
+\begin{equation}\label{beschl}
+  a = \frac{d^2r}{dt^2}
+\end{equation}
+kann die Position durch zweifache Integration von \textit{a} bestimmt werden, zu
+\begin{equation}\label{pos}
+  r = \iint{a dt^2}.
+\end{equation}
+Die Einwirkung der Gravitation auf die Masse muss vor der Berechnung eliminiert werden.\cite{P24}
 
 \section{Body Sensor Network}
 Eine weitere Art der Datenerhebung für die Positionsbestimmung ist durch sogenannte \textit{Body Sensor Networks} (BSN) gegeben.

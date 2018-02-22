@@ -1,0 +1,31 @@
+<fulfillmentToken fulfillmentType="buy" auth="user" xmlns="http://ns.adobe.com/adept">
+  <distributor>urn:uuid:00000000-0000-0000-0000-000000000001</distributor>
+  <operatorURL>http://data.dawsonera.com/fulfillment</operatorURL>
+  <transaction>2F90mQAzWk</transaction>
+  <purchase>50114-05-27T12:10:31+01:00</purchase>
+  <expiration>50114-06-03T12:10:31+01:00</expiration>
+  <resourceItemInfo>
+    <resource>urn:uuid:82ba5202-cd23-483b-a780-c5e129684130</resource>
+    <resourceItem>0</resourceItem>
+    <metadata>
+      <dc:title xmlns:dc="http://purl.org/dc/elements/1.1/">[9781580532624] Principles of GNSS, Inertial, and Multi-sensor Integrated Navigation Systems</dc:title>
+      <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Paul D. Groves.</dc:creator>
+      <dc:publisher xmlns:dc="http://purl.org/dc/elements/1.1/">Artech House Inc</dc:publisher>
+      <dc:identifier xmlns:dc="http://purl.org/dc/elements/1.1/">9781580532624</dc:identifier>
+      <dc:format xmlns:dc="http://purl.org/dc/elements/1.1/">application/pdf</dc:format>
+      <dc:language xmlns:dc="http://purl.org/dc/elements/1.1/">en</dc:language>
+    </metadata>
+    <licenseToken>
+      <resource>urn:uuid:82ba5202-cd23-483b-a780-c5e129684130</resource>
+      <permissions>
+        <display>
+          <until>2018-03-01T09:09:17+00:00</until>
+        </display>
+        <play>
+          <until>2018-03-01T09:09:17+00:00</until>
+        </play>
+      </permissions>
+    </licenseToken>
+  </resourceItemInfo>
+  <hmac>qcpzgUij5DQdcTeDAiLSLb8yXsQ=</hmac>
+</fulfillmentToken>

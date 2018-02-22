@@ -509,10 +509,16 @@ INPUT anhang.aux
 INPUT ./MAIN.out
 INPUT ./MAIN.out
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmex10.pfb
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmmi12.pfb
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr12.pfb
+INPUT /usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmr8.pfb
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmri12.pfb
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmro12.pfb
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/type1/public/lm/lmtt12.pfb
