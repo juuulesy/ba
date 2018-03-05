@@ -1,0 +1,6 @@
+PWD /Users/juliaribbrock/Documents/RWTH/ws17/BA/Schriftliche
+INPUT /usr/local/texlive/2017/texmf.cnf
+INPUT /usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf
+INPUT /usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT danksagung.tex
+OUTPUT danksagung.log

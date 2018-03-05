@@ -1,3 +1,5 @@
+% !TEX root = MAIN.tex
+
 \chapter{Grundlagen}
 \section{Medizinische Grundlagen}
 \subsection{Posturale Kontrolle}
@@ -6,17 +8,176 @@ Da zur Realisierung der posturalen Kontrolle ein ständiger Abgleich zwischen de
 
 \section{Mathematische Methoden}
 Innerhalb der vorliegenden Arbeit werden, unter Anderem zur Datenverarbeitung, verschiedene Berechnungen durchgeführt und mathematische Annahmen getroffen, welche auf grundlegenden mathematischen Ansätzen beruhen.
-So wird zur Datenverarbeitung, unter anderem vom Kalman Filter (KF) und einer seiner Weitereinwicklungen, dem Unscented Kalman Filter (UKF), Gebrauch gemacht.
+So auch vom Kalman Filter und einer seiner Weitereinwicklungen, dem Unscented Kalman Filter (UKF), Gebrauch gemacht.
 
 \subsection{Kalman Filter}
 Betrachtet man dynamische Systeme, muss stets davon ausgegangen werden, dass diese keine ideale Beschreibung des Systemverhaltens zulassen.
 Mitunter werden die Systemgleichungen bei der mathematischen Betrachtung vereinfacht, was in einer, als Systemrauschen bezeichneten, additiven, nicht beeinflussbaren Störung des Systems resultiert.
 Durch die Anbringung von Sensoren ist eine weitere Fehlerquelle gegeben, deren Einfluss über die Ausgangsgröße des Systems berücksichtigt wird. Störungen dieser Art werden Messrauschen genannt.
 Sowohl das Systemrauschen, als auch das Messrauschen werden in Form von Zufallsprozessen in die Berechnungen miteinbezogen. Dies hat jedoch zur Folge, dass auch die Eingangs- und Ausgangsgrößen des Systems als stochastische Größen betrachtet werden müssen.
-Um dennoch eine qualitativ hochwertige Aussage über die Zustände des Systems treffen zu können, muss ein, für den gestörten Eingangsvektor, optimaler Schätzwert gefunden werden. Als optimal wird hierbei, aufgrund der wahrscheinlichkeitstheoretischen Betrachtung, ein Wert minimaler Varianz angestrebt. \cite{Sys2}
+Um dennoch eine qualitativ hochwertige Aussage über die Zustände des Systems treffen zu können, muss ein, für den gestörten Eingangsvektor, optimaler Schätzwert gefunden werden. Als optimaler Wert wird hierbei, aufgrund der wahrscheinlichkeitstheoretischen Betrachtung, ein Wert minimaler Varianz angestrebt. \cite{Sys2}
 \\Einen Ansatz zu diesem Problem lieferte R. Kalman im Jahr 1960 mit dem, nach ihm benannten, Kalman Filter \cite{kalman}.
+\\Ungeachtet des Namens handelt es sich beim Kalman Filter eher um einen Schätzwertalgorithmus, als um einen Filter. Der Algorithmus basiert auf Ansätzen der Wahrscheinlichkeitstheorie nach Bayes. Ermittelt werden die optimalen Schätzwerte auf Grundlage des Wissens über deterministische und statistische Systemeigenschaften. Ausgehend von einem festgelegten Satz an Schätzwerten, werden die Zustandswerte rekursiv, als gewichteter Durchschnitt der vorheringen Werte und neuen Messwerten berechnet. Da in jedem Iterationsschritt des Verfahrens lediglich die aktuellen Messdaten benötigt werden, eignet sich das Kalman Filter gut für Echtzeitanwendungen. \cite{P32}
+\\Das Modell des Kalman Filters besteht aus fünf Hauptelementen: dem Zustandsvektor, dem Systemmodell, dem Messvektor, dem Messungsmodell und dem Filter Algorithmus.
+Der \textit{Zustandsvektor} $\mathbf{x}$, oft auch state vector genannt, ist der Parametersatz durch welchen das System beschrieben wird. Er beeinhaltet die Zustände, welche durch das Kalman Filter geschätzt werden. Eng mit dem Zustandsvektor verbunden, ist die \textit{Fehlerkovarianzmatrix} $\mathbf{P}$ (englisch: error covariance matrix). Durch die Diagonaleinträge der Matrix werden die Varianzen der geschätzten Parameterwerte dargestellt. Die restlichen Einträge der Matrix repräsentieren die Korrelationen zwischen den Fehlern der Zustandsschätzungen. Sowohl der Zustandsvektor als auch die Fehlerkovarianzmatrix müssen zu Beginn vom Nutzer vorgegeben werden. Die Startwerte der Matrix geben an wie sehr den verschiedenen Schätzwerten getraut wird. Mathematisch lässt sich die Fehlerkovarianzmatrix darstellen als
+\begin{equation}\label{P}
+  \mathbf{P} = E((\mathbf{x} - \mathbf{\hat x})(\mathbf{x} - \mathbf{\hat x})^T)   .
+\end{equation}
+Durch das \textit{Systemmodell} werden die zeitlichen Veränderungen der Zustände und der Fehlerkovarianzmatrix beschrieben. Da lediglich auf bekannte Systemeigenschaften zurückgegriffen wird, handelt es sich hierbei um ein deterministisches Modell.
+Der \textit{Messvektor} $\mathbf{z}$ (engl.: measurement vector) umfasst einen Satz aus Simultanmessungen der Systemeigenschaften, als Funktionen des Zustandsvektors. Er besteht aus einer deterministischen, vom Zustandsvektor abhängigen, Funktion und einem Rauschterm $\mathbf{v}_m$. Ähnlich der Fehlerkovarianzmatrix in Bezug zum Zustandsvektor, besteht eine Relation zwischen dem Messvektor und der \textit{Kovarianzmatrix des Messrauschens} $\mathbf{R}$ (engl.: measurement noise covarince matrix). Diese beschreibt die Rauschverteilung der Messwerte und wird mathematisch dargestellt durch
+\begin{equation}\label{R}
+  \mathbf{R} = E(\mathbf{v}_m \mathbf{v}_m^T)   .
+\end{equation}
+ Die diagonalen Einträge sind durch die Varianzen der Messwerte gegeben, während die restlichen Einträge die Korrelationen zwischen den Werten darstellen. Da die Komponenten meist unabhängig voneinander sind, handelt es sich bei der Kovarianzmatrix des Messrauschens in den meisten Fällen um eine Diagonalmatrix.
+Durch das \textit{Messungsmodell} (engl.: measurement model) werden die Veränderungen des Messvektors als Funktion des Zustandsvektors ohne Einbezug des Messrauschens dargestellt.
+Der \textit{Filter Algorithmus} nutzt dann den Messvektor, das Messungs- und das Systemmodell um die optimalen Schätzwerte des Zustandsvektors zu ermitteln. \cite{P32}
+\\Der Algorithmus arbeitet in zwei Schritten, dem Zeitupdate und dem Messungsupdate. Das \textit{Zeitupdate} (engl.: time-update) dient dazu, erfahrungsunabhängige Schätzwerte des Zustandsvektors und der Fehlerkovarianzmatrix bis zum nächsten Messzeitpunkt zu propagieren. Aus diesem Grund wird das Zeitupdate häufig als der Prädiktionsschritt des Filters bezeichnet.
+Das \textit{Messungsupdate} (engl.: measurement-update) stellt die Rückkopplung des Algorithmus dar. In dieser, auch als Korrekturschritt bezeichneten, Phase des Algorithmus, werden die propagierten Schätzwerte durch die aktuellen Messwerte angepasst. \cite{P24}
+\\Um die Funktionsweise des Algorithmus näher zu erläutern wird von einem durch
+\begin{equation}\label{xk}
+  \mathbf{x}_k = \mathbf{Ax}_{k-1} + \mathbf{Bu}_k + \mathbf{w}_{m}
+\end{equation}
+beschriebenen System ausgegangen. Hierbei stellt \textbf{A} die Übergangsmatrix und $\mathbf{w}_m$ das Systemrauschen dar. Die Matrix \textbf{B} verknüpft den optionalen Eingangsvektor \textbf{u} mit dem Zustandsvektor. Dieser Term entfällt jedoch in vielen Berechnungen. Der Messvektor wird dargestellt durch
+\begin{equation}\label{zk}
+  \mathbf{z}_k = \mathbf{H}\mathbf{x}_k+\mathbf{v}_m .
+\end{equation}
+$\mathbf{H}$ bezeichnet die Messungsmatrix, durch welche die Veränderungen des Messvektors abhängig vom Zustandvektor beschrieben werden. $\mathbf{v}_m$ ist der Ausdruck für das Messrauschen. Die beiden Rauschgrößen $\mathbf{w}_m$ und $\mathbf{v}_m$ werden als voneinander unabhängige, weiße und normalverteilte Zufallsgrößen angenommen. \cite{P24}
+\\Das Zeitupdate erfolgt in vier Schritten. Im Ersten erfolgt gegebenfalls die Berechnung der Übergangmatrix $\mathbf{A}_{k-1}$. Da diese jedoch häufig als konstant angenommen werden kann, entfällt dieser Berechnungsschritt mitunter. Die Übergangsmatrix beschreibt wie sich die einzelnen Zustände als Funktion der Systemdynamik mit der Zeit ändern. Somit ist Sie immer eine Funktion des Zeitintervalls zwischen zwei Filteriterationen. Auch der zweite Schritt, die Berechnung der Kovarianzmatrix des Systemrauschens $\mathbf{Q}_{k-1}$ entfällt häufig, da die Matrix als konstant angenommen werden kann. Sie dient der Beschreibung des Anstiegs der Abweichungen der Zustandsschätzungen, aufgrund des Systemrauschens und ist formal gegeben durch
+\begin{equation}\label{Q}
+  \mathbf{Q} = E(\mathbf{w}_m \mathbf{w}_m^T).
+\end{equation}
+Die Prädiktion des Zustansvektors, in Form von
+\begin{equation}\label{xk-}
+  {\mathbf{\hat x}_{k}}^- = \mathbf{A}_{k-1}{\mathbf{\hat x}_{k-1}}^+
+\end{equation}
+erfolgt als dritter Schritt des Zeitupdates. Dabei gibt $ {\mathbf{\hat x}_{k}}^- $ den Wert des geschätzten Zustandsvektor nach dem \textit{Zeitupdate} im k-ten Iterationsschritt an, während ${\mathbf{\hat x}_{k-1}}^+$ den Wert des geschätzten Zustandsvektors nach dem \textit{Messungsupdate} im (k-1)-ten Integrationsschritt darstellt. Diese Notiation unter Verwendung des hochgestellten - und + findet auch in allen nachfolgenden Gleichungen Anwendung. Im abschließenden, vierten Schritt des Zeitupdates wird die Fehlerkovarianzmatrix für den aktuellen Iterationsschritt propagiert. Dies erfolgt über
+\begin{equation}\label{Pk-}
+  {\mathbf{P}_{k}}^- = \mathbf{A}_{k-1}{\mathbf{P}_{k-1}}^+{\mathbf{A}_{k-1}}^T + \mathbf{Q}_{k-1} .
+\end{equation}
+Das Messungsupdate besteht aus insgesamt fünf Berechnungen. Zunächst erfolgt die Berechnung der Kovarianzmatrix des Messrauschens zu
+\begin{equation}\label{Rk}
+  \mathbf{R}_{k} = E((\mathbf{z}_{k} - \mathbf{Hx}_k)(\mathbf{z}_{k} - \mathbf{Hx}_k)^T).
+\end{equation}
+In einigen Fällen, kann auch diese Matrix als konstant angenommen werden. Jedoch ist in diesem Fällen, darauf zu achten, dass die Kovarianzmatrix die nachfolgend durch
+\begin{equation}\label{K}
+  \mathbf{K}_k = {\mathbf{P}_k}^- \mathbf{H}^T(\mathbf{H}{\mathbf{P}_k}^-\mathbf{H}^T + \mathbf{R}_k)^{-1}
+\end{equation}
+berechnete Kalmanverstärkung direkt beeinflusst. \cite{P32}
+Die Kalmanverstärkung (engl.: Kalman Gain) dient der Gewichtung der Messinformationen. Wird sie zu klein gewählt ist es möglich, dass die Schätzwerte des Zustandsvektors langsamer als nötig gegen den angestrebten Wert konvergieren. Desweiteren kann nur langsam auf Änderungen im System eingangen werden. Somit werden in diesem Fall die propagierten Werte stärker gewichtet als die Gemessenen.  Bei einer sehr großen Kalmanverstärkung ist es möglich, dass das Filter nicht mehr im Gleichgewicht arbeitet und somit die tatsächlichen Messwerte des Messvektors $\mathbf{z}_k$ den Filterprozess stärker beeinflussen. \cite{P24}
+Darauffolgend wird mittels Gl.~(\ref{zk}) der Wert des Messvektors aktualisiert.
+Abschließend erfolgen die Korrekturen des Zustandsvektors und der Fehlerkovarianzmatrix über
+\begin{equation}\label{xk+}
+  {\mathbf{\hat x}_k}^+ = {\mathbf{\hat x}_k}^- + \mathbf{K}_k(\mathbf{z}_k - {\mathbf{H\hat x}_k}^-)
+\end{equation}
+und
+\begin{equation}\label{Pk+}
+  {\mathbf{P}_k}^+ = (\mathbf{I} - \mathbf{K}_k\mathbf{H}){\mathbf{P}_k}^-.
+\end{equation}
+\cite{P32}
+\\Da das Kalman Filter auf die Zustandsschätzung linearer Systeme beschränkt ist wurden über die Jahre, auf ihm basierend, einige Ansätze zur Zustandsschätzung nichtlinearer Systeme entwickelt.
+Einer dieser Ansätze ist das \textit{Extended Kalman Filter} (EKF). Bei diesem Verfahren wird eine Gaußverteilung der Zustände angenommen. Das EKF beruht darauf, das nichtlineare System einer Linearisierung erster Ordnung zu unterziehen, um zur weiteren Berechnung die Gleichungen des Kalman Filters nutzen zu können.
+Durch die Linearisierung kann es jedoch zu erheblichen Fehlern in Mittelwert und Kovarianz des Systems kommen, was mitunter in stark divergierendem Verhalten des Filters resultiert. Aus diesem Grund eigenet sich die Anwendung des EKF lediglich für Systeme mit geringer Nichtlinearität.
+Desweiteren ist es im Zuge der Linearisierung nötig Jacobi-Matrizen zu berechnen, was einen erheblichen Rechenaufwand mit sich bringt. \cite{P36}
+\\Um auch die Problematiken des EKF reduzieren zu können, wurde das \textit{Unscented Kalman Filter} entwickelt.
 
 \subsubsection{Unscented Kalman Filter}
+Das Unscented Kalman Filter wurde erstmals von S. J. Julier, J. K. Uhlmann und H. F. Durrant-Whyte vorgestellt \cite{P3,P3-2}. Ähnlich dem EKF, wird auch beim UKF von einer gaußschen Verteilung der Zustände ausgegangen. Diese wird über einen Satz diskreter Abtastpunkte, welche als Sigma Punkte $\mathbf{\mathcal{X}}_i$ bezeichnet werden, festgelegt. Mithilfe dieser Punkte ist eine Parametrisierung des Mittelwertes und der Kovarianz möglich. Die Sigma Punkte werden genutzt um anschließend eine nichtlineare Transformation, welche als \textit{Unscented Transformation} (UT) bezeichnet wird, durchführen zu können. Die Möglichkeit dieser nichtlinearen Transformation führt dazu, dass die, beim EKF notwendige, Berechnung der Jacobi-Matrizen entfällt. \cite{P36}
+\\Zur präzisen, mathematischen Beschreibung des UKF wird von einem  Systemmodell der Form
+\begin{equation}\label{sysmodell_xk+1}
+  \mathbf{x}_{k+1} = \mathbf{f}(\mathbf{x}_k,\mathbf{u}_k) + \mathbf{w}_k
+\end{equation}
+\begin{equation}\label{sysmodell_zk}
+  \mathbf{z}_{k} = \mathbf{h}(\mathbf{x}_k) + \mathbf{v}_k
+\end{equation}
+ausgegangen. Hierbei stellt $\mathbf{x} \in \mathbb{R}^{N_x}$ den Zustandsvektor, $\mathbf{f} : \mathbb{R}^{N_x} \times \mathbb{R}^{N_u} \to \mathbb{R}^{N_x}$ und $\mathbf{h} : \mathbb{R}^{N_x} \to \mathbb{R}^{N_x}$ nichtlineare Vektorfelder,
+$\mathbf{u} \in \mathbb{R}^{N_u}$ den Eingangsvektor und $\mathbf{z} \in \mathbb{R}^{N_z}$ den Messvektor dar. $N_u$, $N_x$ und $N_z$ stehen dabei jeweils für die Anzahl der Einträge der Vektoren $\mathbf{u,x}$ und $\mathbf{z}$.
+Für die Rauschterme $\mathbf{w}_k$ und $\mathbf{v}_k$ wird wie beim Kalman Filter angenommen, dass es sich um unkorrelierte, mittelwertfreie, weiße Gaußprozesse handelt. Die Kovarianzmatrizen der Rauschterme sind über Gl.~(\ref{R}) und Gl.~(\ref{Q}) definiert.
+Angenommen $\mathbf{\hat x}_k$ und $\mathbf{P}_k$ seien initialisiert als
+\begin{equation}\label{x0}
+  \mathbf{\hat x}_0 = E (\mathbf{x}_0)
+\end{equation}
+und
+\begin{equation}\label{P0}
+  \mathbf{P}_0 = E((\mathbf{x_0 - \hat x_0})(\mathbf{x_0 - \hat x_0})^T) .
+\end{equation}
+Dann werden die $(2N_n+1)$ Sigma-Punkte berechnet zu
+\begin{equation}\label{Sigmas}
+  \mathbf{\mathcal{X}}_i =
+  \begin{cases}
+    \mathbf{\hat x}_k & , i=0 \\
+    \mathbf{\hat x}_k + (\gamma \cdot \sqrt {P_k})_i & , i = 1,2,...,N_x \\
+    \mathbf{\hat x}_k - (\gamma \cdot \sqrt {P_k})_{i-N_x} & , i=(N_x+1),...,2N_x.
+  \end{cases}
+\end{equation}
+Hierbei bezeichnet $(...)_i$ die i.te Spalte der Matrix $\mathbf{P}$. Die Variable $\gamma$ ist gegeben durch
+\begin{equation}\label{c}
+  \gamma = \sqrt {N_x+\lambda}  \text{ mit } \lambda = \alpha^2(N_x+\kappa)-N_x
+\end{equation}
+, wobei $\lambda$ und $\kappa$ Skalierungsparameter darstellen. In den meisten Fällen wird  $\kappa = 3 - N_x$ gewählt. Der Paramter $\alpha$ gibt die Ausbreitung der Sigma-Punkte um $\mathbf{\hat x}$ an und wird meist in einem Intervall von $[10^{-4},1]$ gewählt. Für die Berechnung der Wurzel der Fehlerkovarianzmatrix in (\ref{Sigmas}) wird auf die Cholesky-Zerlegung zurückgegriffen, nach der
+\begin{equation}\label{chol}
+    chol(\mathbf{P}_k) = \sqrt {\mathbf{P}_k}
+\end{equation}
+gilt.
+Wie auch beim Kalman Filter, sind Berechnungen des UKF unterteilt in Zeit- und Messungsupdate.
+Innerhalb des Zeitupdates werden die zuvor berechneten Sigma-Punkte zunächst unter Verwendung des dynamischen Systemmodells propaiert zu:
+\begin{equation}\label{prop.sigma1}
+  \mathbf{\tilde {\mathcal{X}}}_k = \mathbf{f}(\mathbf{\mathcal{X}}_{k-1},\mathbf{u}_{k-1}) .
+\end{equation}
+Der geschätzte Zustandsvektor wird somit berechnet zu
+\begin{equation}\label{xk-ukf}
+  {\mathbf{\hat x}_{k}}^- = \sum_{i=0}^{2N_x} {{W_i}^{(m)}\mathbf{\tilde {\mathcal{X}}}_{i,k}}
+\end{equation}
+, wobei ${W_i}^{(m)}$ die Gewichtung der jeweiligen Sigma-Punkte durch
+\begin{equation}\label{Wim}
+    {W_i}^{(m)} =
+    \begin{cases}
+        \frac{\lambda} {(N_x+\lambda)} & , i=0 \\
+        \frac{1} {2(N_x+\lambda)} & , i=1,2,...,2N_x
+    \end{cases}
+\end{equation}
+angibt. Die Fehlerkovarianzmatrix des Zeitupdateschrittes wird berechnet durch
+\begin{equation}\label{Pk-ukf}
+  {\mathbf{P}_k}^- = \sum_{i=0}^{2N_x} {{W_i}^{(c)}(\mathbf{\tilde {\mathcal{X}}}_{i,k} - {\mathbf{\hat x}_k}^-){(\mathbf{\tilde {\mathcal{X}}}_{i,k} - {\mathbf{\hat x}_k}^-)}^T} + \mathbf{Q}
+\end{equation}
+, mit Gewichtung ${W_i}^{(c)}$ gegeben als
+\begin{equation}\label{Wic}
+  {W_i}^{(c)} =
+  \begin{cases}
+      \frac{\lambda} {(N_x+\lambda)} + (1-\alpha^2+\beta) & , i=0 \\
+      \frac{1} {2(N_x+\lambda)} & , i=1,2,...,2N_x
+  \end{cases} .
+\end{equation}
+Der Parameter $\beta$ dient dazu, die UT an die angenommene Zustandsverteilung anzupassen. Für die hier gewählte Gaußverteilung ist eine Wahl von $\beta = 2$ als optimal anzusehen.
+Nun werden mittels (\ref{Sigmas}) erneut Sigma-Punkte $\mathbf{\mathcal{X}_k}^-$, unter Verwendung des geschätzten Zustandsvektors ${\mathbf{\hat x}_k}^-$ und der propagierten Fehlerkovarianzmatrix ${\mathbf{P}_k}^-$, generiert.
+\\Den Übergang zum Messupdate bildet die Schätzung des Messvektor mittels
+\begin{equation}\label{zk_hat-}
+    {\mathbf{\hat z}_k}^- = \sum_{i=0}^{2N_x} {{W_i}^{(m)}\mathbf{Z}_{i,k}}
+\end{equation}
+, wobei durch
+\begin{equation}\label{Zk}
+    \mathbf{Z}_k = \mathbf{h}(\mathbf{\mathcal{X}_k}^-)
+\end{equation}
+die zuvor generierten Sigma-Punkte, unter Gewichtung, mit in die Berechnung einbezogen werden.
+Die Berechnungen des Messupdates umfassen unter Anderem die Berechnung der Kalman Verstärkung
+\begin{equation}\label{Kukf}
+    \mathbf{K}_k = \mathbf{P}_{xz}{\mathbf{P}_{zz}}^{-1}
+\end{equation}
+mit
+\begin{equation}\label{Pzz}
+  \mathbf{P}_{zz} = \sum_{i=0}^{2N_x} {{W_i}^{(c)}(\mathbf{Z}_{i,k}-{\mathbf{\hat z}_k}^-)(\mathbf{Z}_{i,k}-{\mathbf{\hat z}_k}^-)^T} + R
+\end{equation}
+und
+\begin{equation}\label{Pxz}
+  \mathbf{P}_{xz} = \sum_{i=0}^{2N_x} {{W_i}^{(c)}(\mathbf{\mathcal{X}_{i,k}}^--{\mathbf{\hat x}_k}^-)(\mathbf{Z}_{i,k}-{\mathbf{\hat z}_k}^-)^T}}.
+\end{equation}
+Unter Verwendung der Kalman Verstärkung werden abschließend der geschätzte Zustandsvektor $\mathbf{\hat x}_k$ und die Fehlerkovarianzmatrix $\mathbf{P}_k$ aktualisiert zu
+\begin{equation}\label{xhatk+}
+  {\mathbf{\hat x}_k}^+ = {\mathbf{\hat x}_k}^- + \mathbf{K}_k(\mathbf{z}_k-{\mathbf{\hat z}_k}^-)
+\end{equation}
+und
+\begin{equation}\label{Pk+ukf}
+  {\mathbf{P}_k}^+ = {\mathbf{P}_k}^- - \mathbf{K}_k\mathbf{P}_{zz}{\mathbf{K}_k}^T
+\end{equation}
 
 
 \section{Bewegungserfassung}
@@ -94,11 +255,17 @@ Da es nicht möglich ist die Beschleunigung direkt zu messen, wird unter Beachtu
 \begin{equation}\label{beschl}
   a = \frac{d^2r}{dt^2}
 \end{equation}
-kann die Position durch zweifache Integration von \textit{a} bestimmt werden, zu
+kann die Position r durch zweifache Integration von \textit{a} bestimmt werden, zu
 \begin{equation}\label{pos}
   r = \iint{a dt^2}.
 \end{equation}
-Die Einwirkung der Gravitation auf die Masse muss vor der Berechnung eliminiert werden.\cite{P24}
+Die Einwirkung der Gravitation auf die Masse muss vor der Berechnung eliminiert werden. \cite{P24}
+\\Die Vibrating Beam Accelerometer (VBA), oder auch Resonanzbeschleuningungssensoren, stellen eine Alternative zu den Pendelbeschleunigungsmessern dar. Ihr Aufbau ähnelt denen der Pendelbeschleunigungssensoren, jedoch wird die Masse zusätzlich durch einen Schwingbalken entlang der Messachse verstärkt. Dieser Balken drückt oder zieht, je nach Belastung, an der Masse, wodurch es zu einer Streckung oder Stauchung des Balkens kommt.
+Die Resonanzfrequenz, mit welcher der Balken schwingt, verändert sich abhängig von der Streckung/Stauchung. Misst man diese Frequenzänderung so kann eine Aussage über die einwirkende Kraft und somit die Beschleunigung getroffen werden. \cite{P32}
+\\Gyroskope dienen der Messung der Winkelrate \cite{P32} und folgen dem Prinzip der Drehimpulserhaltung \cite{P24}. Hauptsächlich wird von sogenannten Spinning Mass Gyroskopen Gebrauch gemacht. Diese basieren auf dem Gedanken, dass auf eine rotierende Masse ein Drehmoment erzeugt wird. Durch dieses präzediert die Rotationsachse im rechten Winkel zu sich selbst und zur Achse des erzeugten Drehmomentes. Ist die rotierende Masse kardanisch, also in zwei sich schneidenden, zueinander rechtwinkligen Drehlagern aufgehangen, so ist es möglich die Richtungsveränderung zu messen. Der Winkel zwischen dem Gyroskop und dem Gehäuse ist hierbei die Maßeinheit für den Drehimpuls bzw. die Winkelgeschwindigkeit dar. \cite{P24}
+Optische und vibrierende Gyroskope sind mögliche Alternativen zu Spinning Mass Systemen, welche jedoch weitaus weniger verbreitet sind \cite{P32}.
+\\Vor einigen Jahren lag ein großer Nachteil der Inertialsensorik in der Größe der Sensoren. Seit der Entwicklung von \textit{microelectronic mechanical systems} (MEMS) ist diese Problematik erheblich gesunken und ein Tracken menschlicher Bewegungen mittels inertialer Sensoren ermöglicht worden. \cite{P31}
+Ein entscheidender Nachteil, welcher aber auch nach der Entwicklung der MEMS bestehen bleibt ist, dass inertiale Systeme, durch die Erforderlichkeit von Integration zur Berechnung von Position und Orientierung, sehr anfällig für das Auftreten von Drifts sind. Mit steigendem Messzeitraum divergieren Fehler in Position und Orientierung. Dieser Problematik kann lediglich durch ein regelmäßiges neu kalibrieren des Systems oder den Vergleich mit anderen Trackingmethoden entgegengewirkt werden. Wird nur über kurze Zeitverläufe und mit hohen Frequenzen gemessen kann allerding eine hohe Performance erzählt werden. \cite{P24} Da unter Verwendung von Intertialsensorik die Problematik der Verdeckung behoben werden kann, stellen sie eine gute Ergänzung zu optischen Trackingsystemen dar. Desweiteren reagieren Inertialsensoren nicht empfindlich auf äußere elektromagnetische Felder und sind resistent gegenüber Umgebungsrauschen. Eine Nutzung mit hohen Updateraten und der Vorteil der geringen Latenz dieser Art der Trackingsysteme sind weiter positive Aspekte der Inertialsensorik. \cite{P31}
 
 \section{Body Sensor Network}
 Eine weitere Art der Datenerhebung für die Positionsbestimmung ist durch sogenannte \textit{Body Sensor Networks} (BSN) gegeben.
